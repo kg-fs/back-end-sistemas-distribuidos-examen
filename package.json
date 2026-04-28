@@ -1,0 +1,25 @@
+{
+  "name": "back-end-sistemas-distribuidos-examen",
+  "version": "1.0.0",
+  "description": "sistemas distribuidos examen",
+  "yype" : "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kg-fs/back-end-sistemas-distribuidos-examen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kg-fs/back-end-sistemas-distribuidos-examen/issues"
+  },
+  "homepage": "https://github.com/kg-fs/back-end-sistemas-distribuidos-examen#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
