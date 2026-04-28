@@ -2,16 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const os = require("os");
 const cors = require("cors");
-const { createClient } = require("@supabase/supabase-js");
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-// ==================== VALIDACIÓN ENV ====================
-if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
-  console.error("❌ Faltan variables de entorno de Supabase");
-  process.exit(1);
-}
 
 // ==================== MIDDLEWARE ====================
 app.use(cors({
