@@ -18,6 +18,17 @@ app.use(express.json());
 
 
 
+
+app.get("/status", (req, res) => {
+  res.json({
+    status: "OK",
+    server: os.hostname(),
+    timestamp: new Date().toISOString()
+  });
+});
+
+
+
 // ==================== MANEJO GLOBAL DE ERRORES ====================
 process.on("unhandledRejection", (err) => {
   console.error("❌ Unhandled Rejection:", err);
