@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const os = require("os");
 const cors = require("cors");
+const db = require("./src/config/db");
 
 
 const app = express();
@@ -25,6 +26,25 @@ app.get("/status", (req, res) => {
     server: os.hostname(),
     timestamp: new Date().toISOString()
   });
+});
+
+app.get("/test-db", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT NOW() AS fecha");
+
+    res.json({
+      message: "Conexión exitosa 🎉",
+      fecha: rows[0].fecha
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Error conectando a la DB ❌",
+      error: error.message
+    });
+  }
 });
 
 
