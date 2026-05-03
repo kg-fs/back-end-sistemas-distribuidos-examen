@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const os = require("os");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const db = require("./src/config/db");
 
 
@@ -12,10 +13,12 @@ const PORT = process.env.PORT || 3000;
 app.use(cors({
   origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true  // Importante para cookies
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser()); // Middleware para cookies
 
 // ==================== RUTAS ====================
 const userRoutes = require('./src/modules/users/user.routes');
