@@ -55,7 +55,31 @@ const getUserOrders = async (req, res) => {
             error: error.message
         });
     }
-};// ======================
+};
+
+// ======================
+// OBTENER TODAS LAS ÓRDENES (Admin)
+// ======================
+const getAllOrders = async (req, res) => {
+    try {
+        const orders = await orderService.getAllOrders();
+
+        res.status(200).json({
+            success: true,
+            count: orders.length,
+            orders: orders
+        });
+    } catch (error) {
+        console.error('Error en getAllOrders:', error);
+        res.status(500).json({
+            success: false,
+            message: "Error al obtener todas las órdenes",
+            error: error.message
+        });
+    }
+};
+
+// ======================
 // OBTENER DETALLE DE UNA ORDEN (por Header)
 // ======================
 const getOrderDetail = async (req, res) => {
@@ -132,6 +156,7 @@ const updateOrderStatus = async (req, res) => {
 module.exports = {
     checkout,
     getUserOrders,
+    getAllOrders,
     getOrderDetail,
     updateOrderStatus
 };

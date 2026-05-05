@@ -119,6 +119,26 @@ const getOrderDetail = async (num_order) => {
     };
 };
 // ======================
+// OBTENER TODAS LAS ÓRDENES (Admin)
+// ======================
+const getAllOrders = async () => {
+    const [orders] = await db.query(`
+        SELECT 
+            o.Num_order, 
+            o.Num_user, 
+            o.Total, 
+            o.Status, 
+            o.created_at,
+            CONCAT(u.Firs_name_user, ' ', u.Last_name_user) as user_name,
+            u.Email as user_email
+         FROM orders o
+         JOIN users u ON o.Num_user = u.Num_user
+         ORDER BY o.created_at DESC
+    `);
+    return orders;
+};
+
+// ======================
 // ACTUALIZAR ESTADO DE LA ORDEN (para Admin)
 // ======================
 const updateOrderStatus = async (num_order, status) => {
@@ -132,5 +152,6 @@ module.exports = {
     checkout,
     getUserOrders,
     getOrderDetail,
+    getAllOrders,
     updateOrderStatus
 };
