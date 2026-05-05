@@ -41,7 +41,7 @@ const checkout = async (num_user) => {
 
     const [orderResult] = await db.query(
         `INSERT INTO orders (Num_order, Num_user, Total, Status) 
-         VALUES (?, ?, ?, 'pendiente_pago')`,
+         VALUES (?, ?, ?, 'pagado')`,
         [Num_order, num_user, total]
     );
 
